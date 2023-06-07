@@ -34,6 +34,7 @@ export default function Products({ products, metadata, categories }) {
         {
             router.route == "/seller/product" && <SellerComponent> <div className="container mt-8">
         <Link href={"/seller/product/create"} className="bg-secondary p-2  text-white w-fit">Add Product</Link>
+        
         </div>
         </SellerComponent>}
         
@@ -107,6 +108,17 @@ export default function Products({ products, metadata, categories }) {
                                 <p className="max-w-lg">{description}</p>
                                 {redux_user?.role != "seller" && <p><AiOutlineShoppingCart onClick={() => { dispatch(addToCart(product)) }} /></p>
                                 }
+
+                                {
+            router.route == "/seller/product" && <SellerComponent><div className="flex gap-4"> <div className="mt-8">
+        <Link href={`/seller/product/edit/${_id}`} className="bg-secondary p-2  text-white w-fit">Edit</Link>
+        </div>
+        <div className="mt-8">
+        <Link href={"#"} className="bg-secondary p-2  text-white w-fit">Delete</Link>
+        </div>
+        </div>
+        </SellerComponent>}
+
                             </div>
                         </Fragment>
                     })
